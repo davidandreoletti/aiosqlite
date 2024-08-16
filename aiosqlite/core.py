@@ -119,6 +119,7 @@ class Connection(Thread):
                 future.get_loop().call_soon_threadsafe(set_result, future, result)
 
                 if result is _STOP_RUNNING_SENTINEL:
+                    LOG.debug("No more ttransaction item processed: %s", result)
                     break
             except BaseException as e:  # noqa B036
                 LOG.debug("returning exception %s", e)
